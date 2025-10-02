@@ -1,6 +1,21 @@
 const { conectar, desconectar } = require('./db');
 const { encrypt, compare_encrypt } = require('./encrypt')
 
+async function criarTabelas() {
+    const conexao = await conectar();
+
+    let query = `
+    CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL UNIQUE,
+    senha VARCHAR(200) NOT NULL
+    )`
+
+    await conexao.execute(query);
+    await desconectar(conexao);
+}
+
 async function criar_usuario(usuario) {
     const conn = await conectar();
     let query = `
@@ -42,4 +57,4 @@ async function achar_usuario(user) {
     }
 }
 
-module.exports = { criar_usuario, excluir_usuario, achar_usuario }
+module.exports = { criar_usuario, excluir_usuario, achar_usuario, criarTabelas }

@@ -1,11 +1,14 @@
-const { criar_usuario, excluir_usuario, achar_usuario } = require('./controller');
-
 const express = require('express');
 const cors = require('cors');
 
+const { criar_usuario, excluir_usuario, achar_usuario, criarTabelas } = require('./controller');
+
 const app = express();
-app.use(express.json());
+
 app.use(cors());
+app.use(express.json());
+
+criarTabelas()
 
 app.post('/cadastrar', async (req, res) => {
     try {
