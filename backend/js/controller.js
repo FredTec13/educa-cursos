@@ -16,7 +16,7 @@ async function criarTabelas() {
     await desconectar(conexao);
 }
 
-async function criar_usuario(usuario) {
+async function inserir_usuario(usuario) {
     const conn = await conectar();
     let query = `
     INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)`;
@@ -40,7 +40,7 @@ async function excluir_usuario(email) {
     await desconectar(conn);
 }
 
-async function achar_usuario(user) {
+async function buscar_usuario_por_email(user) {
     try {
         const conn = await conectar();
         let query = `
@@ -57,4 +57,4 @@ async function achar_usuario(user) {
     }
 }
 
-module.exports = { criar_usuario, excluir_usuario, achar_usuario, criarTabelas }
+module.exports = { inserir_usuario, excluir_usuario, buscar_usuario_por_email, criarTabelas }

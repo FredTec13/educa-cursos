@@ -1,3 +1,5 @@
 package-lock.json
 node_modules/
 .env
+index-1.html
+scripts-1.js

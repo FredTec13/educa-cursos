@@ -12,24 +12,18 @@ async function inserir_usuario() {
     }
 
     try {
-        const response = await fetch("http://172.16.116.199:5000/cadastar", {
+        const response = await fetch("educa-cursos-production.up.railway.app/cadastrar", { // corrigido endpoint
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario)
         });
 
         const data = await response.json();
-        document.getElementById("registerMsg").innerText = data.message || "Cadastro realizado!";
+        document.getElementById("registerMsg").innerText = data.mensagem || "Cadastro realizado!";
 
         if (response.ok) {
-            // Atualiza navbar
             updateNavbarForLoggedUser(usuario.email);
-
-            // Fecha modal corretamente
-            const modalElement = document.getElementById("registerModal");
-            const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
-            modalInstance.hide();
-
+            fecharModalCadastro();
             showAlert("Conta criada com sucesso!", "success");
         }
     } catch (error) {
@@ -55,7 +49,7 @@ async function buscar_usuario_por_email() {
     }
 
     try {
-        const response = await fetch("http://172.16.116.199:5000/login", {
+        const response = await fetch("educa-cursos-production.up.railway.app/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario)
@@ -66,16 +60,8 @@ async function buscar_usuario_por_email() {
         if (msgEl) msgEl.innerText = data.mensagem || "Login realizado!";
 
         if (response.ok) {
-            // Atualiza navbar
             updateNavbarForLoggedUser(usuario.email);
-
-            // Fecha modal corretamente
-            const modalElement = document.getElementById("loginModal");
-            if (modalElement) {
-                const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
-                modalInstance.hide();
-            }
-
+            closeLoginModal();
             showAlert("Login realizado com sucesso!", "success");
         } else {
             showAlert(data.mensagem || "Credenciais inválidas!", "warning");
@@ -86,13 +72,13 @@ async function buscar_usuario_por_email() {
     }
 }
 
+// Atualiza navbar para usuário logado
 function updateNavbarForLoggedUser(email) {
     const navbarUser = document.getElementById("navbar-user");
     if (navbarUser) {
         navbarUser.innerText = `Olá, ${email}`;
     }
 
-    // Exemplo: esconder botões de login/cadastro e mostrar logout
     const loginBtn = document.getElementById("btn-login");
     const registerBtn = document.getElementById("btn-register");
     const logoutBtn = document.getElementById("btn-logout");
@@ -102,32 +88,26 @@ function updateNavbarForLoggedUser(email) {
     if (logoutBtn) logoutBtn.classList.remove("hidden");
 }
 
+// --------- Modais (Tailwind usando hidden) ---------
 
-
-// Abrir e fechar Login
 function openLoginModal() {
     document.getElementById('loginModal').classList.remove('hidden');
 }
-
 function closeLoginModal() {
     document.getElementById('loginModal').classList.add('hidden');
 }
 
-// Abrir e fechar Cadastro
 function abrirModalCadastro() {
     document.getElementById('registerModal').classList.remove('hidden');
 }
-
 function fecharModalCadastro() {
     document.getElementById('registerModal').classList.add('hidden');
 }
 
-// Alternar entre Login e Cadastro
 function trocarParaCadastro() {
     closeLoginModal();
     abrirModalCadastro();
 }
-
 function trocarParaLogin() {
     fecharModalCadastro();
     openLoginModal();
@@ -141,7 +121,8 @@ window.onclick = function (event) {
     if (event.target === loginModal) closeLoginModal();
     if (event.target === cadastroModal) fecharModalCadastro();
 }
-// Mobile menu functionality
+
+// --------- Menu Mobile ---------
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
@@ -151,7 +132,6 @@ function toggleMobileMenu() {
     menuIcon.classList.toggle('hidden');
     closeIcon.classList.toggle('hidden');
 }
-
 function closeMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
@@ -162,86 +142,19 @@ function closeMobileMenu() {
     closeIcon.classList.add('hidden');
 }
 
-// Abrir e fechar Login
-function openLoginModal() {
-    document.getElementById('loginModal').classList.add('show');
-}
-
-function closeLoginModal() {
-    document.getElementById('loginModal').classList.remove('show');
-}
-
-// Abrir e fechar Cadastro
-function abrirModalCadastro() {
-    document.getElementById('registerModal').classList.remove('hidden');
-}
-
-function fecharModalCadastro() {
-    document.getElementById('registerModal').classList.add('hidden');
-}
-
-// Função para trocar do Login para Cadastro
-function trocarParaCadastro() {
-    closeLoginModal();
-    abrirModalCadastro();
-}
-
-// Função para trocar do Cadastro para Login
-function trocarParaLogin() {
-    fecharModalCadastro();
-    openLoginModal();
-}
-
-// Fechar modais ao clicar fora
-window.onclick = function (event) {
-    const loginModal = document.getElementById('loginModal');
-    const cadastroModal = document.getElementById('registerModal');
-
-    if (event.target === loginModal) {
-        closeLoginModal();
-    }
-    if (event.target === cadastroModal) {
-        fecharModalCadastro();
-    }
-}
-
-// Course carousel functionality
+// --------- Carrossel ---------
 function scrollCourses(direction) {
     const carousel = document.getElementById('courseCarousel');
-    const scrollAmount = 320; // Width of card + gap
-
+    const scrollAmount = 320;
     carousel.scrollBy({
         left: direction * scrollAmount,
         behavior: 'smooth'
     });
 }
 
-// Form submission
+// --------- Formulário de Contato ---------
 document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
     alert('Obrigado por entrar em contato! Retornaremos em breve.');
     this.reset();
-});
-
-document.getElementById("form-cadastro").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const usuario = {
-        nome: document.getElementById("registerName").value,
-        email: document.getElementById("registerEmail").value,
-        senha: document.getElementById("registerSenha").value
-    };
-
-    try {
-        const resposta = await fetch("http://172.16.116.199:5000/cadastrar", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(usuario)
-        });
-
-        const data = await resposta.json();
-        alert(data.mensagem || "Erro ao cadastrar");
-    } catch (err) {
-        console.error("Erro:", err);
-    }
 });

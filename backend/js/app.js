@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const { criar_usuario, excluir_usuario, achar_usuario, criarTabelas } = require('./controller');
+const { inserir_usuario, excluir_usuario, buscar_usuario_por_email, criarTabelas } = require('./controller');
 
 const app = express();
 
@@ -13,7 +13,7 @@ criarTabelas()
 app.post('/cadastrar', async (req, res) => {
     try {
         const novo_usuario = req.body;
-        await criar_usuario(novo_usuario);
+        await inserir_usuario(novo_usuario);
         res.status(201).send({ mensagem: 'Usuário criado com sucesso!'});
     } catch (err) {
         res.status(500).send({ erro: err.message });
@@ -23,7 +23,7 @@ app.post('/cadastrar', async (req, res) => {
 app.post('/login', async (req, res) => {
     try {
         const user = req.body;
-        usuario = await achar_usuario(user);
+        usuario = await buscar_usuario_por_email(user);
         if (usuario){
             res.status(200).send({ mensagem: `Login efetuado com sucesso!`});
         } else {
