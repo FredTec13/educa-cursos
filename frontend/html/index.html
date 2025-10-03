@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EducaCursos - Aprenda Online com Especialistas</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../css/style.css">
 <script>
   tailwind.config = {
     theme: {
@@ -23,89 +24,7 @@
     }
   }
 </script>
-<style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
-  html { scroll-behavior: smooth; }
 
-  .gradient-primary {
-    background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
-  }
-  .gradient-secondary {
-    background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
-  }
-
-  .modal { 
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    left: 0; 
-    top: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.5); 
-  }
-  .modal.show { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-  }
-  .modal-content { 
-    background-color: white; 
-    padding: 2rem; 
-    border-radius: 0.75rem; 
-    width: 90%; 
-    max-width: 400px; 
-    position: relative; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  }
-
-  .course-carousel { 
-    display: flex; 
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
-    gap: 1.5rem; 
-    padding: 1rem 0; 
-    scroll-behavior: smooth;
-  }
-  .course-card { 
-    flex: 0 0 300px; 
-    scroll-snap-align: start; 
-  }
-  .course-carousel::-webkit-scrollbar { 
-    height: 8px; 
-  }
-  .course-carousel::-webkit-scrollbar-track { 
-    background: transparent; 
-  }
-  .course-carousel::-webkit-scrollbar-thumb { 
-    background: #ccc; 
-    border-radius: 4px; 
-  }
-  
-  .close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #6B7280;
-  }
-  
-  .placeholder-image {
-    background: linear-gradient(135deg, #E5E7EB 0%, #D1D5DB 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6B7280;
-    font-weight: bold;
-  }
-</style>
 </head>
 <body class="bg-background text-foreground">
   <!-- Header -->
@@ -198,11 +117,11 @@
 
   <main>
     <!-- Hero Section -->
-    <section id="inicio" class="py-20 px-4 bg-gradient-to-br from-secondary/30 to-background">
-      <div class="container mx-auto max-w-6xl text-center mb-16 animate-fade-in-up">
-        <h1 class="text-5xl md:text-6xl font-bold text-primary mb-6">Aprenda Online com Especialistas</h1>
-        <p class="text-xl text-muted mb-8 max-w-3xl mx-auto">Estude no seu ritmo com a <span class="font-semibold text-primary">EducaCursos</span>. Cursos online de alta qualidade, professores renomados e certificado ao concluir.</p>
-        <a href="#cursos" class="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+    <section id="inicio" class="   secao-aprenda">
+      <div class="container mx-auto max-w-6xl text-center mb-16 animate-fade-in-up ">
+        <h1 class="text-5xl md:text-6xl font-bold  text-green mb-6">Aprenda Online com Especialistas</h1>
+        <p class="text-xl text-white text-muted mb-8 max-w-3xl mx-auto">Estude no seu ritmo com a <span class="font-semibold text-green mb-6 ">EducaCursos</span>. Cursos online de alta qualidade, professores renomados e certificado ao concluir.</p>
+        <a href="#cursos" class="ver-cursos inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
           Ver Cursos
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -212,12 +131,12 @@
     </section>
 
     <!-- Courses Section -->
-    <section id="cursos" class="py-20 px-4 bg-secondary/20">
+    <section id="cursos" class="py-20 px-4 bg-secondary/20 nossos-cursos">
       <div class="container mx-auto max-w-6xl">
         <!-- Título -->
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-primary mb-4">Nossos Cursos</h2>
-          <p class="text-xl text-muted max-w-2xl mx-auto">
+          <h2 class="text-4xl font-bold text-green mb-4">Nossos Cursos</h2>
+          <p class="text-xl  max-w-2xl mx-auto text-green-200">
             Descubra nossa seleção de cursos online desenvolvidos por especialistas da indústria
           </p>
         </div>
@@ -235,7 +154,7 @@
     <div id="courseCarousel" class="course-carousel flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4">
   <!-- Curso 1 -->
 <div class="course-card bg-card rounded-xl shadow-lg border border-border overflow-hidden snap-start min-w-[280px] sm:min-w-[320px] flex flex-col">
-  <img src="../img/desenvolvimento.png" alt="Desenvolvimento Web" class="h-48 w-full object-cover">
+  <img src="../img/desenvolvimento.jpg" alt="Desenvolvimento Web" class="h-48 w-full object-cover">
   <div class="p-6 flex flex-col flex-1">
     <h3 class="text-xl font-bold text-primary mb-2">Desenvolvimento Web</h3>
     <p class="text-muted mb-4">Aprenda HTML, CSS, JavaScript e frameworks modernos</p>
@@ -277,7 +196,7 @@
 
   <!-- Curso 3 -->
   <div class="course-card bg-card rounded-xl shadow-lg border border-border overflow-hidden snap-start min-w-[280px] sm:min-w-[320px] flex flex-col">
-  <img src="../img/design.webp" alt="Design Gráfico" class="h-48 w-full object-cover">
+  <img src="../img/design.png" alt="Design Gráfico" class="h-48 w-full object-cover">
   <div class="p-6 flex flex-col flex-1">
     <h3 class="text-xl font-bold text-primary mb-2">Design Gráfico</h3>
     <p class="text-muted mb-4">Photoshop, Illustrator e princípios de design</p>
@@ -298,7 +217,7 @@
 
   <!-- Curso 4 -->
   <div class="course-card bg-card rounded-xl shadow-lg border border-border overflow-hidden snap-start min-w-[280px] sm:min-w-[320px] flex flex-col">
-  <img src="../img/Analise-de-Dados-26.03.jpg" alt="Análise de Dados" class="h-48 w-full object-cover">
+  <img src="../img/analise-de-dados.jpg" alt="Análise de Dados" class="h-48 w-full object-cover">
   <div class="p-6 flex flex-col flex-1">
     <h3 class="text-xl font-bold text-primary mb-2">Análise de Dados</h3>
     <p class="text-muted mb-4">Python, SQL e visualização de dados</p>
@@ -520,7 +439,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12 px-4">
+  <footer class="bg-gray-900 text-white py-12 px-4 cor-footer">
   <div class="container mx-auto max-w-6xl">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div>

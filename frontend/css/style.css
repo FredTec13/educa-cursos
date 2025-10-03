@@ -356,6 +356,12 @@ html {
     font-weight: bold;
   }
 
+
+  
+
+
+  /* Estilização Fred */
+
   .cor-footer {
     background: linear-gradient(135deg, #0A0A0A, #003300, #39FF14);
   color: #CCFFCC; /* texto em verde claro */
@@ -381,4 +387,25 @@ html {
   main a:hover {
     color: #39FF14; /* link fica mais vibrante no hover */
   }
+
+  .secao-aprenda {
+    background-image: url(../img/fundo-verde.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .ver-cursos {
+    background: linear-gradient(135deg, #0A0A0A, #003300, #39FF14);
+  }
+
+  .nossos-cursos {
+    background: linear-gradient(to right, #1a1a1a, #2a2a2a, #1a1a1a);
+
+
+
+  }
+
+
+
+
   
