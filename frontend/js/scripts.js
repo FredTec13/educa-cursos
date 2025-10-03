@@ -24,7 +24,7 @@ async function inserir_usuario() {
         if (response.ok) {
             updateNavbarForLoggedUser(usuario.email);
             fecharModalCadastro();
-            showAlert("Conta criada com sucesso!", "success");
+            alert("Conta criada com sucesso!", "success");
         }
     } catch (error) {
         document.getElementById("registerMsg").innerText = "Erro no cadastro!";
@@ -62,9 +62,9 @@ async function buscar_usuario_por_email() {
         if (response.ok) {
             updateNavbarForLoggedUser(usuario.email);
             closeLoginModal();
-            showAlert("Login realizado com sucesso!", "success");
+            alert("Login realizado com sucesso!", "success");
         } else {
-            showAlert(data.mensagem || "Credenciais inválidas!", "warning");
+            alert(data.mensagem || "Credenciais inválidas!", "warning");
         }
     } catch (error) {
         if (msgEl) msgEl.innerText = "Erro no login!";
