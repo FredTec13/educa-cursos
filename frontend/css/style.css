@@ -276,7 +276,13 @@ html {
   html { scroll-behavior: smooth; }
 
   .gradient-primary {
-    background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
+    background: linear-gradient(135deg, #0A0A0A, #003300, #39FF14);
+    /* background: linear-gradient(90deg, #003300 0%, #39FF14 50%, #00FF9F 100%); */
+    /* background: linear-gradient(to right, #0A0A0A, #39FF14); */
+    /* background: linear-gradient(135deg, #1A1A1A, #00FF9F); */
+
+
+
   }
   .gradient-secondary {
     background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
