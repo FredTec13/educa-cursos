@@ -355,3 +355,30 @@ html {
     color: #6B7280;
     font-weight: bold;
   }
+
+  .cor-footer {
+    background: linear-gradient(135deg, #0A0A0A, #003300, #39FF14);
+  color: #CCFFCC; /* texto em verde claro */
+  }
+
+  main {
+    background-color: #0A0A0A; /* fundo preto quase total, para destacar conteúdo */
+    color: #CCFFCC; /* texto verde claro, fácil leitura */
+    padding: 40px 20px;
+    font-family: 'Courier New', Courier, monospace; /* fonte estilo terminal */
+  }
+  
+  main h1, main h2, main h3 {
+    color: #39FF14; /* títulos em verde neon, destaque forte */
+  }
+  
+  main a {
+    color: #00FF9F; /* links em verde metálico */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  main a:hover {
+    color: #39FF14; /* link fica mais vibrante no hover */
+  }
+  
