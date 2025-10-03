@@ -12,7 +12,7 @@ async function inserir_usuario() {
     }
 
     try {
-        const response = await fetch("educa-cursos-production.up.railway.app/cadastrar", { // corrigido endpoint
+        const response = await fetch("https://educa-cursos-production.up.railway.app/cadastrar", { // corrigido endpoint
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario)
@@ -49,7 +49,7 @@ async function buscar_usuario_por_email() {
     }
 
     try {
-        const response = await fetch("educa-cursos-production.up.railway.app/login", {
+        const response = await fetch("https://educa-cursos-production.up.railway.app/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(usuario)
